@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Start containers with compose
+bin/stop
+docker-compose up -d
+bin/migrate
+
+if [ "$1" != "-d" ]; then
+    docker-compose logs -f -t
+fi

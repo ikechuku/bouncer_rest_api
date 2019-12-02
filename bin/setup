@@ -1,6 +1,17 @@
 #!/bin/bash
 
-# Create venv folder
-# Installing all requirements
-# Create .env file by copying example
+# create virtual environment folder
+if [ ! -d "venv" ]; then
+    virtualenv venv
+fi
 
+# create .env file from .env.example file
+if [ ! -f ".env" ]; then
+    cp .env.example .env
+fi
+
+# install requirements into the new environment
+if [ -f "requirements.txt" ]; then
+    source bin/env
+    pip install -r requirements.txt
+fi

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=bouncerdb
+    volumes:
+      - "bouncerdb:/var/lib/postgresql/data"
+
+  api:
+    build: .
+    volumes:
+      - "./bouncer:/app"
+    env_file:
+      - .env
+    ports:
+      - "8100:$PORT"
+    depends_on:
+      - db
+
+volumes:
+  bouncerdb:

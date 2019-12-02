@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Start containers with compose and open in browser
+bin/start -d
+open http://127.0.0.1:8100/api
