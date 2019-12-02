@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Install all existing packages
+source bin/env
+pip install -r requirements.txt

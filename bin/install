@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# # Install specific requirements
+source bin/env
+pip install $*
+pip freeze > requirements.txt

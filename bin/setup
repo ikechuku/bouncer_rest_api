@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Create venv folder
+# Installing all requirements
+# Create .env file by copying example
+
