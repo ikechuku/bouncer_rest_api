@@ -1,5 +1,7 @@
 #!/bin/bash
 
+bin/stop
+
 # create virtual environment folder
 if [ ! -d "venv" ]; then
     virtualenv venv
@@ -15,3 +17,5 @@ if [ -f "requirements.txt" ]; then
     source bin/env
     pip install -r requirements.txt
 fi
+
+bin/start

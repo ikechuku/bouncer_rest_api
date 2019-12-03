@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Install specific requirements
+bin/stop
+docker-compose build

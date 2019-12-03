@@ -6,5 +6,5 @@ docker-compose up -d
 bin/migrate
 
 if [ "$1" != "-d" ]; then
-    docker-compose logs -f -t
+    bin/logs
 fi
