@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install postgresql support for the primary container
+          name: Install postgresql for the primary container
           command: |
             sudo apt-get update
             pip install --user psycopg2
