@@ -24,7 +24,7 @@ jobs:
           name: Install all application dependencies
           command: pip install --user -r requirements.txt
       - run:
-          name: Run tests
+          name: Run all test cases in test folder
           command: |
             cd bouncer
             python manage.py test -p test_*.py api.tests
