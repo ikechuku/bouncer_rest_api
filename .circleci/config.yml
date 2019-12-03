@@ -28,47 +28,6 @@ jobs:
           command: |
             cd bouncer
             python manage.py test -p test_*.py api.tests
-  
-  staging-deploy:
-    machine:
-      enabled: true
-    working_directory: ~/app
-    steps:
-      - checkout
       - run:
-          name: Deploy application to staging environment
-          command: docker ps
-
-  production-deploy:
-    machine:
-      enabled: true
-    working_directory: ~/app
-    steps:
-      - checkout
-      - run:
-          name: Deploy application to production environment
-          command: echo $(pwd)
-
-workflows:
-  # set workflow version
-  version: 2
-
-  deployment-to-staging:
-    jobs:
-      - build
-      - staging-deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: develop
-
-  deployment-to-production:
-      jobs:
-        - build
-        - production-deploy:
-            requires:
-              - build
-            filters:
-              branches:
-                only: master
+          name: Running application deployment
+          command: ./deploy/entry
