@@ -10,12 +10,13 @@ services:
 
   api:
     build: .
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - "./bouncer:/app"
     env_file:
       - .env
     ports:
-      - "8100:$PORT"
+      - "8000:8000"
     depends_on:
       - db
 
