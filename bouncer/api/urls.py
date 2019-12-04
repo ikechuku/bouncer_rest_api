@@ -1,9 +1,9 @@
+from bouncer.views import notfound
 from django.urls import path, re_path
-from bouncer.views import index, notfound
 
 
 urlpatterns = [
-    path('', index),
+    # register place other routes here ...
 
     # match route that has not been registered above
     re_path(r'^(?:.*)$', notfound)

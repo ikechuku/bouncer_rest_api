@@ -1,7 +1,10 @@
-from bouncer.views import home
+from bouncer.views import home, index
 from django.urls import path, re_path, include
 
 urlpatterns = [
+    # match api index route request
+    re_path(r'^(?:api/?)$', index),
+
     # match all api prefixed url requests
     path('api/', include('api.urls')),
 
