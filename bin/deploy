@@ -4,7 +4,7 @@
 
 if [ "$CIRCLE_BRANCH" == "master" ]; then
     echo -e "\n[*] Deploying to production environment\n"
-    git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/bouncer-restapi-production.git master:master
+    git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/bouncer-restapi.git master:master
     exit
 fi
 
