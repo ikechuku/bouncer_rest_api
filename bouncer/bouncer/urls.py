@@ -1,5 +1,13 @@
-from django.urls import path, include
+from bouncer.views import home, index
+from django.urls import path, re_path, include
 
 urlpatterns = [
-    path('api/', include('api.urls'))
+    # match api index route request
+    re_path(r'^(?:api/?)$', index),
+
+    # match all api prefixed url requests
+    path('api/', include('api.urls')),
+
+    # match all other routes and respond with 403
+    re_path(r'^(?:.*)$', home)
 ]

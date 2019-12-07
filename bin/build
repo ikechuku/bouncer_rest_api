@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Install specific requirements
+# Build docker images as defined in compose file
 bin/stop
 docker-compose build

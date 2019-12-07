@@ -1,6 +1,10 @@
-from django.urls import path
-from django.contrib import admin
+from bouncer.views import notfound
+from django.urls import path, re_path
+
 
 urlpatterns = [
-    path('', admin.site.urls)
+    # register place other routes here ...
+
+    # match route that has not been registered above
+    re_path(r'^(?:.*)$', notfound)
 ]
