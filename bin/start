@@ -3,7 +3,7 @@
 # Start containers with compose
 bin/stop
 docker-compose up -d
-bin/migrate
+bin/migrate || docker-compose down && exit
 
 if [ "$1" != "-d" ]; then
     bin/logs

@@ -1,4 +1,5 @@
-import os
+import dj_database_url
+from decouple import config
 
 
 class DB:
@@ -10,8 +11,8 @@ class DB:
     def production(cls):
         return {
             'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': os.path.join('dump', 'bouncerdb')
+                **dj_database_url.parse(config('DATABASE_URL')),
+                'ENGINE': 'django.db.backends.postgresql'
             }
         }
 
@@ -22,7 +23,7 @@ class DB:
                 'ENGINE': 'django.db.backends.postgresql',
                 'NAME': 'bouncerdb',
                 'HOST': 'db',
-                'USER': 'postgres',
-                'PASSWORD': 'postgres'
+                'USER': config('DBUSER'),
+                'PASSWORD': config('DBPASSWD'),
             }
         }

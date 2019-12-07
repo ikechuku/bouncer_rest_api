@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo -e "\n[*] Deploying to staging environment\n"

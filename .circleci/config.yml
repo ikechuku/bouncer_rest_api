@@ -1,18 +1,18 @@
 version: 2.1
 
-executors:
-  execdocker:
+jobs:
+  build:
+    working_directory: ~/app
     docker:
       - image: circleci/python:3.7-stretch-node
+        environment:
+          DEBUG: True
+          DBUSER: $DBUSER
+          DBPASSWD: $DBPASSWD
       - image: circleci/postgres:9.6.2
         name: db
         environment:
           POSTGRES_DB: bouncerdb
-
-jobs:
-  build:
-    executor: execdocker
-    working_directory: ~/app
     steps:
       - checkout
       - run:
@@ -30,4 +30,4 @@ jobs:
             python manage.py test -p test_*.py api.tests
       - run:
           name: Running application deployment
-          command: ./deploy/entry
+          command: ./bin/deploy

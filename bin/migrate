@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Start containers with compose
+# Ensure api container is running before executing this script
 docker-compose exec api python manage.py makemigrations
 docker-compose exec api python manage.py migrate
