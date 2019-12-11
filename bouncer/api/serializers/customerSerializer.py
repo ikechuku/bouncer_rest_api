@@ -2,7 +2,7 @@ import sys
 sys.path.append('..')
 from rest_framework import serializers
 
-from ..models.customers import Customers
+from ..models.user.customers import Customers
 
 class CustomerSerializers(serializers.ModelSerializer):
     
