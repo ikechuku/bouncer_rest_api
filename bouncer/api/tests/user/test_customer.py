@@ -1,26 +1,18 @@
 import sys
-sys.path.append('..')
 import json
+sys.path.append('..')
+
+from django.urls import reverse
 from rest_framework import status 
 from rest_framework.test import APITestCase, APIClient
 
+from ...tests.mock_data.customer_data import MockData
 
 class CustomerTest(APITestCase):
-    client=APIClient()
 
     def test_post(self):
-        data = {
-            "last_name": "good",
-            "first_name": "gooder",
-            "email": "olatundesodiqs@gmail.com",
-            "user_name": "ola",
-            "password": "hello",
-            "is_customer": True,
-            "token": "hjfdsjkfl3"
-        }
-
-        url = '/api/customer/register/'
-        response = self.client.post(url, data)
+        url = reverse('customer_register')
+        response = self.client.post(url, MockData.customer_data())
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(response.data['customer']['last_name'], 'good')

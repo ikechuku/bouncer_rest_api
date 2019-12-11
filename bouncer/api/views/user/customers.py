@@ -5,10 +5,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from ...utils.helper import random_string_generator
-from ...serializers.userSerializers import UserSerializers
-from ...serializers.customerSerializer import CustomerSerializers
+from ...serializers.users.user import UserSerializers
+from ...serializers.users.customer import CustomerSerializers
 from ...models.user.users import User
-from ...models.user.customers import Customers
+from ...models.user.customers import Customer
 import bcrypt
 from django.core.mail import send_mail,EmailMessage
 
@@ -23,15 +23,15 @@ class CustomerRegistration(APIView):
             user_name = data['user_name'],
             password = hashed,
             token = token,
-            is_customer = True,
-            email = data['email']
+            user_type = 'customer',
         )
         user.save()
 
-        customer = Customers.objects.create(
+        customer = Customer.objects.create(
             user = user,
             first_name = data['first_name'],
-            last_name = data['last_name']
+            last_name = data['last_name'],
+            email = data['email']
         )
         customer.save()
 
@@ -51,9 +51,9 @@ class CustomerRegistration(APIView):
         from_email = config("EMAIL_SENDER")
         
         html_content ='Welcome on board, complete your registration by clicking the link below'
-        message = f'Welcome on board </br> Click on this <a href="http://example.com/{token}">Link</a> to verify'
+        link_message = f'Welcome on board </br> Click on this <a href="http://example.com/{token}">Link</a> to verify'
 
-        msg= send_mail(subject, html_content,from_email,to, fail_silently=False,  html_message=message)
+        msg= send_mail(subject, html_content,from_email,to, fail_silently=False,  html_message=link_message)
 
         if msg:
             return Response({"message":message,"customer":customer},status=status.HTTP_201_CREATED)
