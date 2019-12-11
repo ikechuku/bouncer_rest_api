@@ -58,5 +58,3 @@ class CustomerRegistration(APIView):
         if msg:
             return Response({"message":message,"customer":customer},status=status.HTTP_201_CREATED)
         return Response({"message":"Error in delivering email"},status=status.HTTP_400_BAD_REQUEST)
-
-    

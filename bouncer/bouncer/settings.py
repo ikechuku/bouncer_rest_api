@@ -29,20 +29,11 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
-EMAIL_HOST_PASSWORD = "fattyolaide22olaidefatty"
-EMAIL_HOST_USER = "abdulfataiaka"
-EMAIL_PORT = 587
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_USE_TLS = True
-
-EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend ')
-
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
-
     'rest_framework',
     'api',
 ]
@@ -70,6 +61,9 @@ EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="dummy@gmail.com")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="dummy-password")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend ')
+
 
 # Global configurations for rest framework
 REST_FRAMEWORK = {}
