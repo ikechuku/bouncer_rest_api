@@ -54,6 +54,13 @@ WSGI_APPLICATION = 'bouncer.wsgi.application'
 
 DATABASES = DB.config(DEBUG)
 
+# Email Settings
+EMAIL_HOST = config("EMAIL_HOST", default="smtp.dummy.net")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="dummy@gmail.com")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="dummy-password")
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 # Global configurations for rest framework
 REST_FRAMEWORK = {}
 
