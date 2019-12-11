@@ -1,6 +1,9 @@
+
+import sys
+sys.path.append('..')
 from bouncer.views import notfound
 from django.urls import path, re_path, include
-from .views import customers
+from .views.user import customers
 
 urlpatterns = [
     # register other routes here ...

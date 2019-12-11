@@ -2,7 +2,7 @@ from rest_framework import serializers
 import sys
 sys.path.append('..')
 
-from ..models.users import User
+from ..models.user.users import User
 
 class UserSerializers(serializers.ModelSerializer):
     
