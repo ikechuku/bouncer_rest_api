@@ -29,18 +29,28 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
+EMAIL_HOST_PASSWORD = "fattyolaide22olaidefatty"
+EMAIL_HOST_USER = "abdulfataiaka"
+EMAIL_PORT = 587
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend ')
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+
     'rest_framework',
-    'api'
+    'api',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -63,6 +73,12 @@ EMAIL_USE_TLS = True
 
 # Global configurations for rest framework
 REST_FRAMEWORK = {}
+
+# Password Hasher
+
+PASSWORD_HASSHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PawordHasher'
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
