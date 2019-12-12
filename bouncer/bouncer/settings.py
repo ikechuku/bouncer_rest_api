@@ -64,7 +64,11 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
 # Global configurations for rest framework
-REST_FRAMEWORK = {}
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
+    ]
+}
 
 # Password Hasher
 PASSWORD_HASSHERS = [
