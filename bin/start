@@ -2,7 +2,6 @@
 
 bin/stop
 docker-compose up -d
-bin/migrate
 
 if ! bin/migrate > /dev/null 2>&1 ; then
     echo -e "\n[*] Stopping all containers due to failed migration attempt\n"

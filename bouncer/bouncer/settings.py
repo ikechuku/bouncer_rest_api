@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -62,14 +61,12 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="dummy-password")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend ')
-
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
 # Global configurations for rest framework
 REST_FRAMEWORK = {}
 
 # Password Hasher
-
 PASSWORD_HASSHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PawordHasher'
 ]
