@@ -1,7 +1,7 @@
 import sys
 sys.path.append('..')
 import json
-from .mock.user_setup import user_data
+from ...tests.mock_data.user_setup import user_data
 from rest_framework import status 
 from rest_framework.test import APITestCase
 from ...models.user.users import User
