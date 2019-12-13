@@ -1,5 +1,5 @@
 import bcrypt
-from ...models.user.users import User
+from ...models.user import User
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
