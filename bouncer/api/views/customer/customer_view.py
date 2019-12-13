@@ -1,14 +1,12 @@
 from decouple import config
-import sys
-sys.path.append("..")
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from ...utils.helper import random_string_generator
-from ...serializers.users.user import UserSerializers
-from ...serializers.users.customer import CustomerSerializers
-from ...models.user.users import User
-from ...models.user.customers import Customer
+from ...serializers.user_serializer import UserSerializer
+from ...serializers.customer_serializer import CustomerSerializer
+from ...models.user import User
+from ...models.customer import Customer
 import bcrypt
 from django.core.mail import send_mail,EmailMessage
 
