@@ -1,5 +1,3 @@
-import sys
-sys.path.append("..")
 import bcrypt
 from ...models.user.users import User
 from rest_framework import status
@@ -8,14 +6,15 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.models import TokenUser
 
-class User_login(APIView):
+
+class UserLogin(APIView):
     def post(self, request):
         data = request.data
         try:
             user = User.objects.get(user_name=data['user_name'])
-            consfirm = bcrypt.checkpw(
+            is_valid_password = bcrypt.checkpw(
                 data['password'].encode('utf-8'), user.password.split("'")[1].encode('utf-8'))
-            if consfirm:
+            if is_valid_password:
                 refresh = RefreshToken.for_user(user)
                 token = {
                     'access': str(refresh.access_token),
