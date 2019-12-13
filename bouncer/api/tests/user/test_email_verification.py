@@ -1,17 +1,19 @@
-import sys
-sys.path.append('..')
 import json
-from ...tests.mock_data.user_setup import user_data
+from ..mock_data.user_setup import user_data
 from rest_framework import status 
 from rest_framework.test import APITestCase
 from ...models.user.users import User
 
-class EmailVerificationTest(APITestCase):
+class TestEmailVerification(APITestCase):
     
     def test_verify(self):
-        create_url = '/api/customer/register/'
-        user_create=self.client.post(create_url,user_data)
-        user = User.objects.get(user_name=user_create.data['customer']['user_name'])
+        user = User.objects.create(
+            user_name=user_data["user_name"],
+            password = user_data["password"],
+            user_type = user_data["user_type"],
+            email_verified=user_data["email_verified"],
+            token=user_data["token"]
+        )
         token = user.token
         url = '/api/auth/verify-email/'
         response =self.client.post(url,{"token":token})
