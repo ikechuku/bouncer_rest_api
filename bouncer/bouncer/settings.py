@@ -66,8 +66,9 @@ EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.smtp.
 # Global configurations for rest framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        # Changed authentication class
         'rest_framework_simplejwt.authentication.JWTTokenUserAuthentication',
-    ]
+    ],
 }
 
 # Password Hasher
