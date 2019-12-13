@@ -8,7 +8,7 @@ from ...models.user.users import User
 import bcrypt
 
 
-class LoginTest(APITestCase):
+class TestLogin(APITestCase):
     def setUp(self):
         data = register_data()
         hashed = bcrypt.hashpw(
