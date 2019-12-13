@@ -1,5 +1,5 @@
 from django.db import models
-from .users import User
+from .user import User
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=50, null=False)

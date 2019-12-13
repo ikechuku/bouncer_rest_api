@@ -2,11 +2,11 @@ from rest_framework.permissions import IsAuthenticated
 from django.http import Http404,JsonResponse
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
-from ...serializers.users.user import UserSerializers
+from ...serializers.user_serializer import UserSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view,permission_classes
-from ...models.user.users import User
+from ...models.user import User
 class EmailVerificationView(APIView):
     #checks if user exists in database
     def check(self, *args):
