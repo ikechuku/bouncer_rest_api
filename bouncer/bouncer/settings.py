@@ -29,6 +29,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> rebase
 # Application definition
 
 INSTALLED_APPS = [
