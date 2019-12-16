@@ -1,0 +1,22 @@
+[
+    {
+      "model": "api.User",
+      "pk":1,
+      "fields": {
+        "user_name": "johndoe",
+        "password": "b'$2b$12$G3KHInO1Hm/CHLHb/4SInO23Yy9jhxaIyBTMCSYfxFnzr/4pR8AFG'",
+        "user_type":"customer",
+        "email_verified":false
+      }
+    },
+    {
+        "model": "api.User",
+        "pk":2,
+        "fields": {
+          "user_name": "bouncer",
+          "password": "b'$2b$12$dsxnbXHncyQVSTcdnVt9.u39WXJlOf4mzdi.7hON1upA5JD6pC.0C'",
+          "user_type":"vendor",
+          "email_verified":false
+        }
+      }
+  ]

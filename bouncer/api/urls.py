@@ -13,6 +13,7 @@ urlpatterns = [
     path('auth/login/', login.UserLogin.as_view(), name='login'),
     path('vendor/register/', vendor_view.VendorRegistration.as_view(), name='vendor_register'),
 
+
     # match route that has not been registered above
     re_path(r'^(?:.*)$', notfound)
 ]
