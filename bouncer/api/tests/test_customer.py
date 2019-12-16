@@ -12,5 +12,4 @@ class TestCustomer(APITestCase):
         url = reverse('customer_register')
         response = self.client.post(url, customer_registration_data())
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
         self.assertEqual(response.data['customer']['last_name'], 'test')
