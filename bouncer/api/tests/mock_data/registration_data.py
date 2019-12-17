@@ -42,7 +42,7 @@ def fp_customer_registration_data():
 }
 
     
-def fp_endor_registration_data():
+def fp_vendor_registration_data():
     return {
     "shop_name": "AnotherBest4less",
     "email": "anothertest@gmail.com",

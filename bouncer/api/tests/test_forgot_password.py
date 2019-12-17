@@ -2,7 +2,7 @@ import json
 from django.urls import reverse
 from rest_framework import status 
 from rest_framework.test import APITestCase, APIClient
-from .mock_data.registration_data import fp_customer_registration_data, fp_vendor_registration_data, customer_registration_data, vendor_registration_data
+from .mock_data.registration_data import fp_customer_registration_data, fp_vendor_registration_data
 from .mock_data.forgot_password_data import customer_forgot_password_data, vendor_forgot_password_data
 
 class TestForgotPassword(APITestCase):
