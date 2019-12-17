@@ -30,4 +30,26 @@ def user_registration_data():
     "email_verification_token":"123456"
 }
     
+def fp_customer_registration_data():
+    return {
+    "last_name": "Doe",
+    "first_name": "John",
+    "email": "johnDoe@gmail.com",
+    "user_name": "customer_jd",
+    "password": "testpassword",
+    "user_type": "customer",
+    "token": "hjfdsjkfl3"
+}
+
+    
+def fp_endor_registration_data():
+    return {
+    "shop_name": "AnotherBest4less",
+    "email": "anothertest@gmail.com",
+    "user_name": "vendor_jd",
+    "password": "testpassword",
+    "user_type": "vendor",
+    "token": "hjfdsjkfl3"
+}
+
 
