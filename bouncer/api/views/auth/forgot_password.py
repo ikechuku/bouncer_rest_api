@@ -23,18 +23,13 @@ class ForgotPassword(APIView):
             if user_type=="customer":
                 user = Customer.objects.get(user_id=user_id)
                 email = user.email   
-                print(email)
+
             elif user_type == "vendor":
                 user = Vendor.objects.get(user_id=user_id)
                 email = user.email
 
             user.token = token
-            user.save()
 
-                # try:
-                #     # user = User.objects.get(user_name=data["user_name"])
-                #     user.token = token
-                #     user.save()
         except:
 
             return Response(dict(error="This user_name does not exist"), status=status.HTTP_400_BAD_REQUEST)
@@ -45,15 +40,18 @@ class ForgotPassword(APIView):
         from_email = config("EMAIL_SENDER")
         
         html_content ='Complete your password reset by clicking the link below'
-        link_message = f'Reset your password </br> Click on this <a href=" http://127.0.0.1:8100/auth/reset-password?{user_id} ">Link</a> to set a new password'
+        link_message = f'Reset your password </br> Click on this <a href="http://bouncer-restapi-staging.herokuapp.com/api/auth/reset-password?{token} ">Link</a> to set a new password'
         message = "A password reset Link has been sent to your Email address"
         msg= send_mail(subject, html_content,from_email,to, fail_silently=False,  html_message=link_message)
-        user={
+        user_details={
             "user_id":user_id,
             "user_type":user_type,
-            "user_name":user_name
+            "user_name":user_name,
+            "email": email
         }
 
         if msg:
-            return Response({"message":message, "user":user},status=status.HTTP_200_OK)
+            user.save()
+            return Response({"message":message, "user":user_details},status=status.HTTP_200_OK)
         return Response({"message":"Error in delivering email"},status=status.HTTP_400_BAD_REQUEST)
+        
