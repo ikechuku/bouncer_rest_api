@@ -4,11 +4,6 @@ FROM python:3.7
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-# Install system dependency for psycopg2
-# Install psycopg2 package
-# Delete the added virtual package added to 'world'
-# Make curl available for running commands
-
 # Install requirements
 ADD requirements.txt .
 RUN pip install -r requirements.txt
