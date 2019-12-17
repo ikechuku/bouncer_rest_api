@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view,permission_classes
 from ...models.user import User
 from ...models.customer import Customer
-# from ...models.vendor import Vendor
+from ...models.vendor import Vendor
 from django.core.mail import send_mail,EmailMessage
 from decouple import config
 from ...utils.helper import random_string_generator
@@ -25,7 +25,7 @@ class ForgotPassword(APIView):
                 email = user.email   
                 print(email)
             elif user_type == "vendor":
-                # user = Vendor.objects.get(user_id=user_id)
+                user = Vendor.objects.get(user_id=user_id)
                 email = user.email
 
             user.token = token
