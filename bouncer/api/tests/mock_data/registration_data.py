@@ -12,14 +12,14 @@ def customer_registration_data():
 
 def vendor_registration_data():
     return {
-        "last_name": "test",
-        "first_name": "test_name",
+        "shop_name": "best4less",
         "email": "test@gmail.com",
         "user_name": "testuser",
         "password": "testpassword",
         "user_type": "vendor",
         "token": "hjfdsjkfl3"
     }
+    
 def user_registration_data():
     return {
     "id":8,
@@ -29,4 +29,5 @@ def user_registration_data():
     "email_verified":False,
     "token":"123456"
 }
+    
 
