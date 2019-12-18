@@ -35,9 +35,6 @@ def forgot_password_customer_registration_data():
     "last_name": "Doe",
     "first_name": "John",
     "email": "johnDoe@gmail.com",
-    "user_name": "customer_jd",
-    "password": "testpassword",
-    "user_type": "customer",
     "token": "hjfdsjkfl3"
 }
 
