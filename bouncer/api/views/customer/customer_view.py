@@ -29,7 +29,7 @@ class CustomerRegistration(APIView):
             user = User.objects.create(
                 user_name = data['user_name'].strip(),
                 password = hashed,
-                email_verificataion_token = email_token,
+                email_verification_token = email_token,
                 user_type = 'customer',
             )
 

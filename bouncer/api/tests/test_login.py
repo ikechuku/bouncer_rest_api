@@ -17,7 +17,7 @@ class TestLogin(APITestCase):
         user = User.objects.create(
             user_name=data['user_name'],
             password=hashed,
-            email_verificataion_token=token,
+            email_verification_token=token,
             user_type='customer',
         )
         user.save()

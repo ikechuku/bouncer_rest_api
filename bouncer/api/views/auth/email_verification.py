@@ -11,7 +11,7 @@ class EmailVerificationView(APIView):
     #checks if user exists in database
     def check(self, *args):
         try:
-            user = User.objects.get(email_verificataion_token=args[0])
+            user = User.objects.get(email_verification_token=args[0])
             return user
         except:
             return False
@@ -27,7 +27,7 @@ class EmailVerificationView(APIView):
             - status
     """
     def post(self, request):
-        token = request.data["email_verificataion_token"]
+        token = request.data["email_verification_token"]
         user = self.check(token)
         if user and user.email_verified==False:
             refresh = RefreshToken.for_user(user)

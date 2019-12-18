@@ -8,8 +8,8 @@ class TestEmailVerification(APITestCase):
     
     def test_verify(self):
         user = User.objects.create(**user_registration_data())
-        token = user.email_verificataion_token
+        token = user.email_verification_token
         url = '/api/auth/verify-email/'
-        response =self.client.post(url,{"email_verificataion_token":token})
+        response =self.client.post(url,{"email_verification_token":token})
         self.assertEqual(response.status_code,status.HTTP_202_ACCEPTED)
         self.assertEqual(response.data['message'], 'verified')
