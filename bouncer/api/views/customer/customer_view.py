@@ -23,13 +23,13 @@ class CustomerRegistration(APIView):
             hashed = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
             
             # Generate token
-            token = random_string_generator()
+            email_token = random_string_generator()
 
             # create user 
             user = User.objects.create(
                 user_name = data['user_name'].strip(),
                 password = hashed,
-                token = token,
+                email_verificataion_token = email_token,
                 user_type = 'customer',
             )
 
@@ -48,4 +48,4 @@ class CustomerRegistration(APIView):
             customer.save()
 
             # send mail to the user
-            return send_email(data, token)
+            return send_email(data, email_token)

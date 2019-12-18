@@ -30,7 +30,7 @@ class VendorRegistration(APIView):
             user = User.objects.create(
                 user_name = data['user_name'],
                 password = hashed,
-                token = token,
+                email_verificataion_token = token,
                 user_type = 'vendor',
                 )
         
