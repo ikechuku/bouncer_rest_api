@@ -17,7 +17,6 @@ def vendor_forgot_password_data():
 def create_customer():
     user = User.objects.create(user_name= "customerDoe", password="pass123", user_type="customer", email_verified=False)
     customer = Customer.objects.create(last_name= "Doe", email="customer@gmail.com", first_name="customer", user=user)
-    # print(customer.email)
     return customer
 
 def create_vendor():
