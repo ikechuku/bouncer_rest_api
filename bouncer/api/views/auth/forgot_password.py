@@ -39,7 +39,7 @@ class ForgotPassword(APIView):
         from_email = config("EMAIL_SENDER")
         
         html_content ='Complete your password reset by clicking the link below'
-        link_message = f'Reset your password </br> Click on this <a href="http://bouncer-restapi-staging.herokuapp.com/api/auth/reset-password?{token} ">Link</a> to set a new password'
+        link_message = f'Reset your password </br> Click on this <a href="http://https://bouncerapp.netlify.com/login/reset-password?token={token} ">Link</a> to set a new password'
         message = "A password reset Link has been sent to your Email address"
         msg= send_mail(subject, html_content,from_email,to, fail_silently=False,  html_message=link_message)
        
