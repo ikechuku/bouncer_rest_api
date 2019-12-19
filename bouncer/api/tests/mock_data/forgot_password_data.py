@@ -13,13 +13,3 @@ def vendor_forgot_password_data():
         "user_name": "vendorDoe"
     }
 
-
-def create_customer():
-    user = User.objects.create(user_name= "customerDoe", password="pass123", user_type="customer", email_verified=False)
-    customer = Customer.objects.create(last_name= "Doe", email="customer@gmail.com", first_name="customer", user=user)
-    return customer
-
-def create_vendor():
-    user = User.objects.create(user_name= "vendorDoe", password="pass123", user_type="vendor", email_verified=False)
-    vendor = Vendor.objects.create(shop_name= "Doe", email="vendor@gmail.com", account_verified=False, user=user)
-    return vendor
