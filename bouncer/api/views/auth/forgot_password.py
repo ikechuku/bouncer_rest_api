@@ -1,11 +1,11 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view,permission_classes
+from rest_framework.decorators import permission_classes
 from ...models.user import User
 from ...models.customer import Customer
 from ...models.vendor import Vendor
-from django.core.mail import send_mail,EmailMessage
+from django.core.mail import send_mail
 from decouple import config
 from ...utils.helper import random_string_generator
 
@@ -14,11 +14,12 @@ class ForgotPassword(APIView):
         data = request.data
         token = random_string_generator()
         user_name=data['user_name']
-        user = User.objects.get(user_name = user_name)
-        user_id = user.id
-        user_type = user.user_type
+        users = User.objects.filter(user_name = user_name)
         
-        if user:
+        if users.count() == 1:
+            user = users[0]
+            user_id = user.id
+            user_type = user.user_type
             if user_type=="customer":
                 user = Customer.objects.get(user_id = user_id)
                 email = user.email   
@@ -27,7 +28,7 @@ class ForgotPassword(APIView):
                 user = Vendor.objects.get(user_id = user_id)
                 email = user.email
 
-            user.token = token
+            user.forgot_password_token = token
 
         else:
             return Response(dict(error="This user_name does not exist"), status=status.HTTP_400_BAD_REQUEST)
