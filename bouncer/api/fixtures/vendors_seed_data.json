@@ -1,0 +1,12 @@
+[
+    {
+        "model": "api.Vendor",
+        "pk": 1,
+        "fields": {
+            "shop_name": "Bouncer Shop",
+            "email":"bouncer@gmail.com",
+            "account_verified":false,
+            "user": 2
+        }
+    }
+]
