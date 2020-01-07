@@ -45,8 +45,9 @@ def send_email(data, token):
     text_content= "You are welcome on board."
     to = [data["email"]]
     from_email = config("EMAIL_SENDER")
+    email_verification_url=config("VERIFY_EMAIL_URL")
     html_content ='Welcome on board, complete your registration by clicking the link below'
-    link_message = f'Welcome on board </br> Click on this <a href="http://example.com/{token}">Link</a> to verify'
+    link_message = f'Welcome on board </br> Click on this <a href="{email_verification_url}/?token={token}">Link</a> to verify'
     try:
         send_mail(subject, html_content,from_email,to, fail_silently=False,  html_message=link_message)
         return Response(dict(message=message,customer=customer_message(data)),status=status.HTTP_201_CREATED)
