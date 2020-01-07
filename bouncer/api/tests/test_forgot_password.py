@@ -2,7 +2,7 @@ import json
 from django.urls import reverse
 from rest_framework import status 
 from rest_framework.test import APITestCase
-from .mock_data.forgot_password_data import customer_forgot_password_data, vendor_forgot_password_data
+from .mock_data.forgot_password_data import customer_forgot_password_data, vendor_forgot_password_data, user1_registration_data, user2_registration_data, customer_registration_data, vendor_registration_data
 from ..models.customer import Customer
 from ..models.vendor import Vendor
 from ..models.user import User
@@ -10,15 +10,14 @@ from ..models.user import User
 
 class BaseViewTest(APITestCase):
     def setUp(self):
-        user = User.objects.create(user_name= "customerDoe", password="pass123", user_type="customer", email_verified=False)
+        user = User.objects.create(**user1_registration_data())
         user.save()
-        customer = Customer.objects.create(last_name= "Doe", email="customer@gmail.com", first_name="customer", user=user)
+        customer = Customer.objects.create(**customer_registration_data(), user=user)
         customer.save()
         
-
-        user1 = User.objects.create(user_name= "vendorDoe", password="pass123", user_type="vendor", email_verified=False)
+        user1 = User.objects.create(**user2_registration_data())
         user1.save()
-        vendor = Vendor.objects.create(shop_name= "Doe", email="vendor@gmail.com", account_verified=False, user=user1)
+        vendor = Vendor.objects.create(**vendor_registration_data(), user=user1)
         vendor.save()
 
 class TestForgotPassword(BaseViewTest):
