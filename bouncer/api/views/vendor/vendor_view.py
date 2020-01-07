@@ -8,6 +8,7 @@ from ...models.vendor import Vendor
 import bcrypt
 from django.core.mail import send_mail,EmailMessage
 from ...verification.vendor_validator import validate 
+from ...utils.helper import  random_string_generator, send_email, vendor_message
 
 
 class VendorRegistration(APIView):
@@ -40,40 +41,31 @@ class VendorRegistration(APIView):
                 shop_name = data['shop_name'],
                 email = data['email']
                 )
+                
+            user.save()
             
+            #save vendor in database
+            vendor.save()
 
+            email_verification_url = config("VERIFY_EMAIL_URL")
             message = "Registration was successful"
-            
-            def vendor_message(data):
-                return {
-            "shop_name":data['shop_name'],
-            "user_name":data['user_name'].strip(),
-            "email":data['email'],
-            "email_verified": False,
-            "account_verified": False
+
+            customer_message_details = {
+                'subject': 'Bouncer email verification',
+                'text_content': "You are welcome on board.",
+                'to': [data["email"]],
+                'from_email': config("EMAIL_SENDER"),
+                'html_content': 'Welcome on board, complete your registration by clicking the link below',
+                'link_message': f'Welcome on board </br> Click on this <a href="{email_verification_url}/?token={token}">Link</a> to verify'
+
             }
-            
 
-            subject = 'Bouncer email verification'
+            # send mail to the user
+            send = send_email(customer_message_details)
+            if send:
+                return Response({'message': message, 'user_message': vendor_message(data)}, status=status.HTTP_201_CREATED)
+            else:
+                return Response(dict(message='Network Error: Could not send email at the moment You are registered'), status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
-            text_content= "Welcome on board."
-
-            to = [data["email"]]
-            from_email = config("EMAIL_SENDER")
-        
-            html_content ='Welcome on board, complete your registration by clicking the link below'
-            link_message = f'Welcome on board </br> Click on this <a href="http://example.com/{token}">Link</a> to verify'
-
-            msg= send_mail(subject, html_content, from_email, to, fail_silently=False,  html_message=link_message)
-
-            if msg:
-                #save user in database
-                user.save()
+            return send_email(data, token, vendor_message)
                 
-                #save vendor in database
-                vendor.save()
-                
-                return Response({"message":message,"vendor":vendor_message(data)}, status=status.HTTP_201_CREATED)
-            
-            return Response({"message":"Error in delivering email"}, status=status.HTTP_400_BAD_REQUEST)
-            
