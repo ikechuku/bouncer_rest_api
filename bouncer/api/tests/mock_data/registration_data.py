@@ -7,7 +7,7 @@ def customer_registration_data():
         "user_name": "testuser",
         "password": "testpassword",
         "user_type": "customer",
-        "email_verificataion_token": "hjfdsjkfl3"
+        "email_verification_token": "hjfdsjkfl3"
     }
 
 def vendor_registration_data():
@@ -17,7 +17,7 @@ def vendor_registration_data():
         "user_name": "testuser",
         "password": "testpassword",
         "user_type": "vendor",
-        "email_verificataion_token": "hjfdsjkfl3"
+        "email_verification_token": "hjfdsjkfl3"
     }
     
 def user_registration_data():
@@ -27,7 +27,7 @@ def user_registration_data():
     "password": "hello",
     "user_type": "customer",
     "email_verified":False,
-    "email_verificataion_token":"123456"
+    "email_verification_token":"123456"
 }
     
 

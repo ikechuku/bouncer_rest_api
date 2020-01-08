@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='user',
             old_name='token',
-            new_name='email_verificataion_token',
+            new_name='email_verification_token',
         ),
         migrations.AddField(
             model_name='user',
