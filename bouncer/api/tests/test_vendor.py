@@ -11,5 +11,5 @@ class TestVendor(APITestCase):
         url = reverse('vendor_register')
         response = self.client.post(url, vendor_registration_data())
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data['vendor']['shop_name'], 'best4less')
+        self.assertEqual(response.data['user_message']['shop_name'], 'best4less')
         

@@ -39,16 +39,24 @@ def customer_message(data):
     "email":data['email'],
 }
 
-def send_email(data, token):
-    message = "Registration was successful"
-    subject = 'Bouncer email verification'
-    text_content= "You are welcome on board."
-    to = [data["email"]]
-    from_email = config("EMAIL_SENDER")
-    html_content ='Welcome on board, complete your registration by clicking the link below'
-    link_message = f'Welcome on board </br> Click on this <a href="http://example.com/{token}">Link</a> to verify'
+def vendor_message(data):
+    return {
+    "shop_name":data['shop_name'],
+    "user_name":data['user_name'].strip(),
+    "email":data['email'],
+    "email_verified": False,
+    "account_verified": False
+}
+
+def send_email(message_details):
     try:
-        send_mail(subject, html_content,from_email,to, fail_silently=False,  html_message=link_message)
-        return Response(dict(message=message,customer=customer_message(data)),status=status.HTTP_201_CREATED)
-    except:
-        return Response(dict(message='Network Error: Could not send email at the moment You are registered'))
+        send_mail(
+            subject=message_details['subject'], 
+            message=message_details["html_content"],
+            from_email=message_details['from_email'],
+            recipient_list=message_details['to'], 
+            html_message=message_details['link_message'],
+        )
+        return True
+    except Exception as Error:
+        return False
