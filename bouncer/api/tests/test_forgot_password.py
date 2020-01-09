@@ -23,13 +23,11 @@ class BaseViewTest(APITestCase):
 class TestForgotPassword(BaseViewTest):
 
     def test_customer_forgot_password(self):
-        print(User.objects.filter(user_name="customerDoe").first())
         url = reverse("forgot_password")
         response = self.client.post(url, customer_forgot_password_data())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
     def test_vendor_forgot_password(self):
-        print(User.objects.filter(user_name="vendorDoe").first())
 
         url = reverse('forgot_password')
         response = self.client.post(url, vendor_forgot_password_data())

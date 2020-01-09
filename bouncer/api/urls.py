@@ -1,7 +1,7 @@
 
 from bouncer.views import notfound
 from django.urls import path, re_path, include
-from .views.auth import login,email_verification,reset_password
+from .views.auth import login,email_verification,reset_password, forgot_password
 from .views.customer import customer_view
 from .views.vendor import vendor_view
 
