@@ -29,5 +29,3 @@ def user_registration_data():
     "email_verified":False,
     "email_verification_token":"123456"
 }
-    
-
