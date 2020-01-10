@@ -66,6 +66,4 @@ class VendorRegistration(APIView):
                 return Response({'message': message, 'user_message': vendor_message(data)}, status=status.HTTP_201_CREATED)
             else:
                 return Response(dict(message='Network Error: Could not send email at the moment You are registered'), status=status.HTTP_503_SERVICE_UNAVAILABLE)
-
-            return send_email(data, token, vendor_message)
                 
