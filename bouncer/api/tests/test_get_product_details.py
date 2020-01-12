@@ -26,6 +26,6 @@ class BaseViewTest(APITestCase):
 
 class TestGetProductDetails(BaseViewTest):
     def test_get_product_details(self):
-        url = reverse('get_product_details')
-        response = self.client.post(url, test_product_data())
+        url = reverse('get_product_details', kwargs={"id":1})
+        response = self.client.post(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

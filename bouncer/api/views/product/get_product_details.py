@@ -17,9 +17,9 @@ Returns:
         product - {}
 """
 class GetProductDetails(APIView):
-    def post(self, request):
+    def post(self, request, id):
         data = request.data
-        product_id = data["id"]
+        product_id = id
 
         try:
             product = Product.objects.get(id=product_id)
