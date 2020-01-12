@@ -6,5 +6,5 @@ class VendorSerializers(serializers.ModelSerializer):
     
     class Meta:
         model = Vendor
-        fields = '__All__'
+        fields = '__all__'
         
