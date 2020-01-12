@@ -4,7 +4,7 @@ from django.urls import path, re_path, include
 from .views.auth import login,email_verification,reset_password, forgot_password
 from .views.customer import customer_view
 from .views.vendor import vendor_view
-from .views.product import product_list
+from .views.product.product_list import ProductListView
 
 
 urlpatterns = [
@@ -15,7 +15,7 @@ urlpatterns = [
     path('auth/login/', login.UserLogin.as_view(), name='login'),
     path('vendor/register/', vendor_view.VendorRegistration.as_view(), name='vendor_register'),
     path('auth/reset_password/', reset_password.ResetPassword.as_view(), name='reset_password'),
-    path('products', product_list.ProductListView.as_view(), name='product'),
+    path('products', ProductListView.as_view(), name='product_list'),
 
 
     # match route that has not been registered above

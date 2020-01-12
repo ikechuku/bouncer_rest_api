@@ -26,4 +26,3 @@ class ProductListView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     pagination_class = CustomPagination
-
